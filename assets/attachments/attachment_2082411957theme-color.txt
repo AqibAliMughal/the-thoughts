@@ -1,0 +1,8 @@
+Purple: #4F2CD0
+Light Purple: #ab59fd
+Black: #323030
+Gray: #ededed
+Black(Shaded): #303030;
+
+command to indent
+{"keys": ["alt+shift+f"], "command": "reindent", "args": {"single_line": false}}

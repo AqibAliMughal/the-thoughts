@@ -1,0 +1,229 @@
+*{
+	position: 0;
+	margin: 0;
+	/*background-color: skyblue;*/
+}
+
+/* NAVBAR */
+nav{
+	background-color: #4F2CD0;
+	height: 70px
+}
+.nav-text, .footer-text, .sign-in-btn{
+	font-size: 22px;
+	color: #fff;
+}
+
+.form, .register-form{
+	padding: 10px;
+	border: 3px solid #323030;
+	/*height: 720px;*/
+	border-radius: 10px;
+	border-image: 
+    linear-gradient(
+      to bottom, 
+      #ab59fd, 
+      rgba(0, 0, 0, 0)
+    ) 1 100%;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	transition: 0.3s
+	/*box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;*/
+
+}
+.register-form{
+	/*height: 790px;*/
+	margin-bottom: 20px
+}
+.form:hover, .register-form:hover{
+	border-image: 
+    linear-gradient(
+      to top, 
+      #323030, 
+      rgba(0, 0, 0, 0)
+    ) 1 100%;
+	box-shadow: rgba(112, 67, 192, 0.4) 0px 10px 36px 0px, rgba(108, 28, 205, 0.6) 0px 0px 0px 1px;
+}
+
+.form-heading:hover{
+	color: #111;
+	/*border-bottom: 1px solid #111;*/
+	opacity: 65%;
+}
+
+.form-button, .login-btn{
+	color: #323030;
+	background-color: #fff;
+	border: none;
+	padding: 6px 25px;
+	border-radius: 8px;
+	font-weight: bold;
+	transition: 0.3s;
+}
+.form-button:hover{
+	background-color: #323030;
+	color: #fff;
+	padding: 10px 35px;
+	border-left: 12px solid #ab59fd;
+}
+
+.form-button-link{
+	color: #fff;
+	text-decoration: none;
+}
+.login-btn{
+	color:  #fff;
+	background-color:#323030;
+}
+
+.sign-up-btn, .login-up-btn{
+	background-color:#323030;
+	color:#ffff;
+	padding: 8px 40px;
+	font-weight: bold;
+	transition: 0.3s;
+	box-sizing: border-box;
+}
+
+.sign-up-btn:hover, .login-up-btn:hover{
+	background-color: #323030;
+	color: #fff;
+	padding: 12px 35px;
+	border-left: 12px solid #ab59fd;
+}
+
+/*SHOW LOGIN and FORGET MESSAGE*/
+.login-msg, .forget-msg
+{
+	color: red; 
+	font-size: 16px; 
+	font-weight: 500; 
+	letter-spacing: 1.5px
+}
+
+/* MAIN SECTION */
+.post-by{
+	display: flex; 
+	justify-content: space-between;
+	width: 96.6%
+}
+ul > li{
+	display: inline;
+}
+ul > li > a{
+	text-decoration: none;
+}
+.recent-post-section{
+	background-color: #ededed;
+	border-radius: 10px;
+	padding: 0px 5px;
+}
+.recent-post-text{
+	color: #fff;
+	background-color: #4F2CD0;
+	border-bottom: 4px solid #ab59fd;
+	padding: 10px;
+}
+.right-side-links{
+	text-decoration: none;
+	color: #111;
+}
+
+/* Read More Blog Link START HERE- Home Page  */
+.read-blog-link{
+	color: #ab59fd;
+	font-size: 22px;
+	font-weight: bold;
+	transition: 0.3s;
+}
+.read-blog-link:hover{
+	color: #4F2CD0;
+	font-size: 24px;
+
+}
+/* Read More Blog Link END HERE- Home Page  */
+
+/* CATEGORY TAGS */
+.categoryTags, #page-active, #page-inactive{
+	background-color: #ededed;
+	padding: 3px 8px;
+	border-radius: 7px;
+}
+/* CATEGORY TAGS END */
+
+/*  */
+#page-active{
+	color: #fff;
+	background-color: green;
+	font-weight: bold;
+}
+#page-inactive
+{
+	color: #fff;
+	background-color: tomato;
+	font-weight: bold;
+}
+/* FOLLOW BLOG BUTTON START HERE */
+.follow-blog-btn{
+	background-color: #303030;
+	color: #fff;
+	font-weight: bold;
+	letter-spacing: 3px;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 8px;
+	transition: 0.3s;
+	box-sizing: border-box;
+}
+.follow-blog-btn:hover{
+	opacity: 85%;
+	letter-spacing: 5px;
+	border-left: 12px solid #ab59fd;
+}
+/* FOLLOW BLOG BUTTON END HERE */
+
+/* HOME PAGE CARD POST */
+.card-post{
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+/* HOME PAGE CARD POST END*/
+
+/* FOOTER */
+footer{
+	background-color: #4F2CD0;
+	height: 300px
+}
+.about-us{
+	font-weight: 200;
+	font-size: 16px
+}
+
+.red-form-btn{
+	color: #fff;
+	background-color: tomato;
+	border: none;
+	padding: 12px 25px;
+	border-radius: 8px;
+	font-weight: bold;
+	transition: 0.3s;
+}
+
+.red-form-btn:hover{
+	opacity: 80%;
+}
+
+.dashboard-form-btn{
+	background-color: #303030;
+	color: #fff;
+	font-weight: bold;
+	letter-spacing: 3px;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 8px;
+	transition: 0.3s;
+	box-sizing: border-box;
+}
+.dashboard-form-btn:hover{
+	opacity: 85%;
+	letter-spacing: 1px;
+	border-left: 12px solid #ab59fd;
+}
