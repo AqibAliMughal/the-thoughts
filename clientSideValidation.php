@@ -8,7 +8,7 @@
     }
   </style>
 
-<!--   <script>
+  <script>
       function validation()
       {
         var flag = true;
@@ -201,4 +201,4 @@
       }
       return flag;
     }
-</script>  -->
+</script> 
