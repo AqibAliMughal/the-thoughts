@@ -315,7 +315,7 @@ footer{
 }
 
 .scroll-div{
-	height: 260px;
+	height: auto;
 	overflow: hidden;
 	overflow-y: auto;
 }
