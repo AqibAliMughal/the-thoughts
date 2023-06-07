@@ -1,6 +1,6 @@
 <?php
 
-class Validate
+class Validation
 {
 	protected static $error_message 	 = '';
 	public static $flag 						   = false;
