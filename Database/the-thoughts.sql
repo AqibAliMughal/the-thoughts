@@ -1,6 +1,6 @@
 /*
 SQLyog Ultimate v12.5.0 (64 bit)
-MySQL - 10.4.27-MariaDB : Database - the-thoughts
+MySQL - 10.4.28-MariaDB : Database - the-thoughts
 *********************************************************************
 */
 
@@ -211,15 +211,16 @@ CREATE TABLE `post_comment` (
   KEY `post_id` (`post_id`),
   CONSTRAINT `post_comment_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `post_comment_ibfk_2` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `post_comment` */
 
 insert  into `post_comment`(`post_comment_id`,`post_id`,`user_id`,`comment`,`is_active`,`created_at`) values 
-(1,28,53,'Social media is essential. #unblockSocialMedia #openSocialMedia','Active','2023-05-20 10:30:23'),
+(1,28,53,'Social media is essential. #unblockSocialMedia #openSocialMedia','InActive','2023-05-20 10:30:23'),
 (2,28,53,'Unblock social media...!','Active','2023-05-20 10:32:47'),
-(3,28,53,'No words','InActive','2023-05-20 10:33:56'),
-(4,28,56,'Go for twitter trends it will work definetly ','Active','2023-05-20 11:15:58');
+(3,28,53,'No words','Active','0000-00-00 00:00:00'),
+(4,28,56,'Go for twitter trends it will work definetly ','Active','2023-05-20 11:15:58'),
+(6,25,56,'AI is the future.','Active','2023-06-08 09:21:10');
 
 /*Table structure for table `role` */
 
@@ -288,17 +289,16 @@ CREATE TABLE `user` (
 /*Data for the table `user` */
 
 insert  into `user`(`user_id`,`role_id`,`first_name`,`last_name`,`email`,`password`,`gender`,`date_of_birth`,`user_image`,`address`,`is_approved`,`is_active`,`created_at`,`updated_at`) values 
-(1,2,'Cally','Whitfield','lujigow@mailinator.com','123','Female','2022-11-16','Image_3212user2.jpg','Labore iste qui fugi','Approved','Active','2023-05-12 21:52:57','2023-05-09 23:19:52'),
+(1,2,'Cally','Whitfield','lujigow@mailinator.com','123','Female','2022-11-16','Image_3212user2.jpg','Labore iste qui fugi','Approved','InActive','2023-05-12 21:52:57','2023-05-09 23:19:52'),
 (44,1,'Ahmed Ali','Baloch','admin@gmail.com','admin','Male','1998-11-11','Image_3212user2.jpg','djsdhajk','Approved','Active','2023-05-12 20:37:11','2023-05-10 05:38:51'),
 (45,1,'ABC','john','hyder@gmail.com','12345','Female','1996-01-18','Image_2563user1.png','Random address of user.......','Approved','InActive','2023-05-12 21:30:36','2023-05-10 05:39:05'),
 (53,2,'Shezor','Ali','s@gmail.com','123','Male','2001-09-19','updated_Image_1248updated_Image_1405card8.jpg','Karachi','Approved','Active','2023-05-12 21:44:01','2023-05-23 10:33:48'),
 (54,2,'Alexander','Valdez','wejocefe@mailinator.com','Pa$$w0rd!','Male','2000-06-15','Image_3212user2.jpg','Adipisicing lorem cu','Rejected','Active','2023-05-12 10:54:00','2023-05-11 09:34:31'),
-(55,2,'Samson','Todd','hiliqe@mailinator.com','Pa$$w0rd!','Female','2020-06-14','Image_2563user1.png','Non Nam omnis dolore','Pending','Active','2023-05-12 21:01:55','2023-05-11 09:35:43'),
-(56,2,'Abrar','Ahmed','ab@gmail.com','abrar123','Male','1996-03-10','Image_3212user2.jpg','Abrar ahmed house number 04004','Approved','Active','2023-05-12 22:09:18','2023-05-11 09:39:14'),
-(57,2,'Abra','Ash','nuvomujom@mailinator.com','abra','Female','1992-03-04','Image_3212user2.jpg','Europe','Rejected','InActive','2023-05-12 22:01:28','2023-05-16 04:05:55'),
+(55,2,'Samson','Todd','hiliqe@mailinator.com','Pa$$w0rd!','Female','2020-06-14','Image_2563user1.png','Non Nam omnis dolore','Approved','InActive','2023-05-12 21:01:55','2023-06-07 09:15:12'),
+(56,2,'Abrar','Ahmed','ab@gmail.com','abrar123','Male','1996-03-10','Image_3212user2.jpg','Abrar ahmed house number 04004','Pending','InActive','2023-05-12 22:09:18','2023-05-11 09:39:14'),
+(57,2,'Abra','Ashley','nuvomujom@mailinator.com','abra','Female','1992-03-04','Image_3212user2.jpg','Europe','Pending','InActive','2023-05-12 22:01:28','2023-06-07 09:16:25'),
 (59,2,'Vance','Coffey','sexene@mailinator.com','Pa$$w0rd!','Male','2003-12-21','user3.jpg','Labore dolor aliqua','Pending','InActive','2023-05-15 09:28:53','2023-05-15 09:28:53'),
-(60,2,'Vance','Coffey','sexene@mailinator.com','Pa$$w0rd!','Male','2003-12-21','user3.jpg','Labore dolor aliqua','Pending','Active','2023-05-15 09:30:44','2023-05-15 09:30:44'),
-(61,2,'Daquan','Hood','disozuh@mailinator.com','Pa$$w0rd!','Female','1993-07-13','Image_1952user3.png','Nihil eius dolores l','Approved','InActive','2023-05-15 09:31:20','2023-05-15 09:31:20');
+(61,2,'Daquan','Hood boy','disozuh@mailinator.com','Pa$$w0rd!','Female','1993-07-13','Image_1952user3.png','Nihil eius dolores l','Pending','InActive','2023-05-15 09:31:20','2023-06-07 02:29:34');
 
 /*Table structure for table `user_feedback` */
 
