@@ -9,8 +9,9 @@
     =====================================
    -->
 <div class="col-lg-7 col-md-7 col-sm-12 mx-3">
-	<span style="color:green; font-weight:500;font-size: 22px;"><?= isset($_REQUEST['msg'])? $_REQUEST['msg'] : ''; ?></span>
-	<div class="row mb-4" style="margin-top: 35px;">
+	<span style="color:green; font-weight:500;font-size: 22px;">
+	<?= isset($_REQUEST['msg'])? $_REQUEST['msg'] : ''; ?></span>
+	<div class="row mb-4" style="margin-top: 15px;">
 		<div class="col-lg-3 mx-3 col-md-3 admin-page-status" >
 			<h2 class="status-heading">Total Page</h2>
 			<p class="page-info">
@@ -59,19 +60,13 @@
 					</tr>
 				</thead>
 				<tbody>
-					<?php 
-					
-					if($userinfo == "")
-					{ ?>
-						<tr>
-						<td><h5><strong>No Record Found</strong> </h5></td>
-						</tr>
-					<?php 
-					}
-					else
-					{	
+					<?php
+					if( empty($userinfo) ):?>
+						<tr><td><h5><strong>No Record Found</strong> </h5></td></tr>
+					<?php
+				else:
 						$serialNumber = 1;
-						foreach ($userinfo as $key => $user) { ?>
+						foreach ($userinfo as $key => $user): ?>
 							<tr>
 								<td><?= $serialNumber++ ?></td>
 								<td><?= $user['NAME'] ?></td>
@@ -82,36 +77,31 @@
 									<img src="../assets/user_image/<?= $user['user_image']?>" alt="User Profile Picture" width="50" height="50" style="border-radius:50%" >
 								</td>
 								<td>
-									<?php 
-									if ($user['is_active'] == 'Active' )
-										{ ?>
-											<a href="user-update.php?uid=<?= $user['user_id'] ?>" class="btn btn-success">Activated</a> 
-											<!-- USE AJAX FOR THIS PROCESS [ later ] -->
-											<!-- <a href="javascript:void(0)" onclick="" class="status-active">Activated</a> -->
-											<?php 
-										}
-										else
-										{
-											?>
-											<a href="user-update.php?uid=<?= $user['user_id'] ?>" class="btn btn-danger">InActive</a>
-										<?php } 
-										?>
-										<a href="user-update.php?uid=<?= $user['user_id'] ?>" class="btn btn-primary">Edit</a>
-									</td>
+									<a href="user-update.php?us=<?= $user['user_id']?>&request=InActive" class="btn btn-danger">InActive</a>
+									<a href="user-update.php?uid=<?= $user['user_id'] ?>" class="btn btn-primary">Edit</a>
+								</td>
 								</tr>
 								<?php
-							}
-				}
+							endforeach;
+						endif;
 					?>
 				</tbody>
 			</table>
 		</div>
+				<?php 
+				 if ( count($userinfo) === 5 ):
+					echo 
+					"<a href='users-all.php' style='text-decoration:none'>
+					<p class='page-info fs-5'>View All</p>
+					</a>";
+				 endif;
+				 ?>
 	<!-- 
     =====================================
     |       APPROVE/REJECT USER         |
     =====================================
    -->	
-		<h2 class="mt-5">New Registration</h2>
+		<h2 class="mt-3">New Registration</h2>
 		<div class="scroll-div">
 			<table class="table table-hover approval-section">
 				<thead>
@@ -127,18 +117,12 @@
 				</thead>
 				<tbody>
 					<?php 
-
-					if($userinfo == "")
-					{ ?>
-						<tr>
-						<td><h5><strong>No Record Found</strong> </h5></td>
-						</tr>
-					<?php 
-					}
-					else
-					{								
+					if( empty($pendingUsers) ):?>
+						<tr><td><h5><strong>No Record Found</strong> </h5></td></tr>
+					<?php
+				else:
 						$serialNumber = 1;
-						foreach ($pendingUsers as $key => $user) { ?>
+						foreach ($pendingUsers as $key => $user): ?>
 							<tr>
 								<td><?= $serialNumber++ ?></td>
 								<td><?= $user['NAME'] ?></td>
@@ -152,19 +136,18 @@
 								</td>
 							</tr>
 							<?php
-						}
-					}
+						endforeach;
+					endif;
 					?>
 				</tbody>
 			</table>
 		</div>	
-
 	<!-- 
     =====================================
     |       COMMENT - Approve/Reject    |
     =====================================
     -->	
-    <h2 class="mt-5">Comments</h2>
+    <h2 class="mt-3">Comments</h2>
 		<div class="scroll-div">
 			<table class="table table-hover approval-section">
 				<thead>
@@ -172,7 +155,8 @@
 						<th>SNo:</th>
 						<th>Full Name</th>
 						<th>Comment</th>
-						<th>Created At</th>
+						<th>Post</th>
+						<th>Comment At</th>
 						<th>Image</th>
 						<th>Status</th>
 					</tr>
@@ -188,15 +172,19 @@
 					<?php 
 					}
 					else
-					{								
+					{					
 						$serialNumber = 1;
 						foreach ($comments as $key => $user) { ?>
 							<tr>
 								<td><?= $serialNumber++ ?></td>
 								<td><?= $user['user_name'] ?></td>
 								<td><?= $user['comment'] ?></td>
+								<td><?= $user['Post_Title'] ?></td>
 								<td><?= createdAt($user['created_at']) ?></td>
 								<td><img src="../assets/user_image/<?= $user['user_image']?>" alt="User Profile Picture" width="50" height="50" style="border-radius:50%" ></td>
+								<td>
+									<a href="comment.php?status=<?=$user['post_comment_id']?>" class="btn btn-danger">InActive</a>
+								</td>
 								<td>
 									<a href="comment.php?cid=<?=$user['post_comment_id']?>" class="btn btn-primary">Edit</a>
 								</td>
