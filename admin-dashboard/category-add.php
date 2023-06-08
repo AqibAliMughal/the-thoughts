@@ -86,5 +86,4 @@ $title = "Add | Update Category";
 require_once '../assets/initial/navbar.php';
 requireFiles(['html/category-add']);
 HTML::footer();
-
 ?>

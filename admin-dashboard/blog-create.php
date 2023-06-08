@@ -38,7 +38,6 @@ if( isset($_REQUEST['createPage']) )
   require_once '../assets/initial/navbar.php';
   require_once 'html/blog-create.php';
   HTML::footer();
-  // require_once '../partials/footer.php';
 }
 else
 {
