@@ -1,25 +1,38 @@
 <?php
 require '../functions.php';
-requireFiles(['../Classes/HTML', '../Classes/CRUD', '../Classes/Database','../Classes/Redirect', '../Classes/Role']);
+requireFiles(
+	[
+	'../Classes/HTML', 
+	'../Classes/CRUD', 
+	'../Classes/Database',
+	'../Classes/Redirect', 
+	'../Classes/Role'
+]);
 $crud = new CRUD;
 Database::getConnection();
-
 Role::admin();
+
+if( isset($_REQUEST['status']) ):
+	$is = $crud -> update('post_comment', ['is_active' => 'Active'], ['post_comment_id', $_REQUEST['status']]);
+	Redirect::to("index", ['msg'=> 'Activated.']);
+endif;
+
 //Displaying all time comments
 $showComments = Database::query(
                "SELECT  post_comment.post_comment_id, CONCAT(USER.first_name , ' ' ,USER.last_name ) 
-                  AS user_name, post_comment.comment , post_comment.is_active 
-                  FROM USER
-                  INNER JOIN post_comment
-                  ON post_comment.user_id  = user.user_id  
-                  INNER JOIN post
-                  ON post.post_id  = post_comment.post_comment_id 
-                  ORDER BY user.user_id DESC");
-
-/* 
-   ==========================================================
-   |			FOR ADDING COMMENT INTO DATABASE 				   |
-   ==========================================================
+							 AS user_name, post_comment.comment , post_comment.is_active 
+							 FROM USER
+							 INNER JOIN post_comment
+							 ON post_comment.user_id = user.user_id  
+							 INNER JOIN post
+							 ON post.post_id  = post_comment.`post_id`
+							 WHERE post_comment.`is_active` = 'Active' 
+							 ORDER BY post_comment.`post_comment_id` DESC"
+							 );
+/*
+   =========================================
+   |		FOR ADDING COMMENT INTO DATABASE   |
+   =========================================
 */
 
 if(isset($_REQUEST['add_comment'])):
@@ -30,15 +43,13 @@ if(isset($_REQUEST['add_comment'])):
 endif;
 
 /* 
-   =======================================================
-   |			        FOR UPDATING CATEGORY	     			   |
-   =======================================================
+   ==================================
+   |			  FOR UPDATING CATEGORY	  |
+   ==================================
 */
 if( isset($_REQUEST['cid']) ) $_SESSION['id'] = $_REQUEST['cid'];
 
 if( isset($_REQUEST['update_comment']) ):
-
-   // $commentID = $_SESSION['id']
 	$time = update();
 	if( $_REQUEST['update_comment'] !== "")
 	{
@@ -57,14 +68,13 @@ if( isset($_REQUEST['update_comment']) ):
 	}
 endif;
 /* 
-   =======================================================
-   |			FOR CHANGING COMMENT STATUS 					   |
-   =======================================================
+   ======================================
+   |			FOR CHANGING COMMENT STATUS 	|
+   ======================================
 */
    if(isset($_REQUEST['c_status']) && $_REQUEST['c_status'] !== "")
    {
    		$status = $crud -> select('post_comment', ['is_active'], ['post_comment_id' => $_REQUEST['c_status']]);
-         // dd($status);
    		if($status[0]['is_active'] === "Active")
    		{
    			$crud -> update('post_comment', ['is_active' => 'InActive'], ['post_comment_id', $_REQUEST['c_status']]);
@@ -78,9 +88,9 @@ endif;
    }
 
 /* 
-   =========================
+   ========================
    |		HTML - VIEW   		|
-   =========================
+   ========================
 */
 $title = "Update Comment";
 require_once '../assets/initial/navbar.php';
