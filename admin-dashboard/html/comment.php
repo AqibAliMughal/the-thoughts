@@ -1,6 +1,6 @@
-<div class="row mb-2 mt-2">
+<!-- <div class="row mb-2 mt-2">
 <div class="col-lg-5"></div>
-<div class="col-lg-2">
+<div class="col-lg-2"> -->
 	<?php
 	if( isset($_REQUEST['msg']))
 		{?>
@@ -20,13 +20,12 @@
 		<div class="col-lg-2 col-md-2 col-sm-12">
 			<?php require_once '../assets/initial/sidebar.php'; ?>
 		</div>
-		<div class="col-lg-1"></div>
-		<div class="col-lg-3 col-md-3 col-sm-12 admin-page-status" style="height: 300px">
-			<!-- 
-				============================ 
-				ADD OR EDIT COMMENT FORM 
-				============================
-			-->
+		<!-- 
+			========================== 
+			 ADD OR EDIT COMMENT FORM 
+			==========================
+		-->
+		<div class="col-lg-4 col-md-4 col-sm-12 admin-page-status" style="height: 300px">
 			<?php 
 				if ( isset($_REQUEST['cid']) )
 				{
@@ -53,20 +52,16 @@
 						</div>
 					</form>
 		</div>
-		<div class="col-lg-4 col-md-4 col-sm-12 mx-4 admin-page-status" style="height: 400px">
-			<!-- 
-				============================ 
-					 SHOW CATEGORIES 
-				============================
-			-->
+		<div class="col-lg-5 col-md-5 col-sm-12 mx-4 admin-page-status" style="height: 800px">
 			<h2 class="status-heading">Edit Comment</h2>
-			<div class="scroll-div" style="height: 320px;">
+			<div class="scroll-div" style="height: 800px;">
 				<table class="table table-hover ">
 					<thead>
-						<tr align="center">
+						<tr align="left">
 							<th>SNo:</th>
 							<th>Author</th>
 							<th>Comment</th>
+							<th>Post</th>
 							<th>Status</th>
 							<th>Update</th>
 						</tr>
@@ -79,6 +74,7 @@
 								<td><?= $serialNumber++ ?></td>
 								<td style="text-align: left"><?= $comment['user_name']?></td>
 								<td style="text-align: left"><?= $comment['comment']?></td>
+								<td style="text-align: left"><?= $comment['Post_Title']?></td>
 								<?php if($comment['is_active'] == 'Active') { ?>
 								<td>
 									<a href="comment.php?c_status=<?= $comment['post_comment_id']?>" class="btn btn-success">Active</a>
