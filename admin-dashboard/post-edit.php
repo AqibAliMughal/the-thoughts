@@ -1,6 +1,14 @@
 <?php 
 require_once '../functions.php';
-requireFiles(['../Classes/Redirect', '../Classes/CRUD', '../Classes/Database', '../Classes/Upload','../Classes/Role']);
+requireFiles(
+	[
+	'../Classes/Redirect', 
+	'../Classes/CRUD', 
+	'../Classes/Database', 
+	'../Classes/Upload',
+	'../Classes/HTML',
+	'../Classes/Role'
+]);
 $crud = new CRUD;
 Database::getConnection();
 Role::admin();
@@ -26,7 +34,6 @@ if( isset($_REQUEST['update']) )
 				'post_id', $_SESSION['update_post_id']
 			]
 		);
-
 //Remains
 /*		$crud->update
 		(
@@ -83,7 +90,6 @@ if( isset($_REQUEST['update']) )
 			]
 		);
 	}
-	// session_destroy();
 	Redirect::to('index', ['msg' => 'Updated.']); //INDEX MEANS ADMIN-DASHBOARD
 	die();
 }
@@ -113,7 +119,7 @@ if ( isset($_SESSION['user']) )
 		$showBlogs = $crud->select('blog', ['blog_id', 'blog_title'], ['user_id' => $_SESSION['user']['user_id']]);
 		require_once '../assets/initial/navbar.php'; 
 		require 'html/post-edit.php';
-		requireFiles(['../partials/footer']);
+		HTML::footer();
 	}
 	else
 	{
