@@ -86,9 +86,9 @@ require_once '../assets/initial/navbar.php';
   endif;
 
 /*
-============================================
-  SEND MAIL TO USER AS PER STATUS CHANGED  |
-============================================
+=====================================================
+  SEND MAIL TO USER AS PER REQUEST APPROVED CHANGED |
+=====================================================
 */
 if( isset($_REQUEST['request']) ):
   $userIs = $crud->select('user',["CONCAT(first_name, ' ', last_name)AS NAME, email"], ['user_id' => $_REQUEST['us']]);
@@ -96,7 +96,7 @@ if( isset($_REQUEST['request']) ):
   $userEmail = $userIs[0]['email'];
   $requestType = $_REQUEST['request'];
 
-    if( $requestType == 'approve' )
+    if( $requestType === 'approve' )
     {
       $result = $crud -> update('user', ['is_approved' => 'Approved'], ['user_id', $_REQUEST['us']]);
       Email('sahmedrajput17@gmail.com', $userEmail, $userName, "Request Approved", 
@@ -104,7 +104,7 @@ if( isset($_REQUEST['request']) ):
       "); 
       Redirect::to('index', ['msg' => "Request Approved"]);
     }
-    else if( $requestType == 'reject' )
+    else if( $requestType === 'reject' )
     {
       $result = $crud -> update('user', ['is_approved' => 'Rejected'], ['user_id', $_REQUEST['us']]);
       Email('sahmedrajput17@gmail.com', $userEmail, $userName, "Request Rejected", 
@@ -112,7 +112,7 @@ if( isset($_REQUEST['request']) ):
       ");
       Redirect::to('index', ['msg' => "Request Rejected"]);
     }
-    elseif( $requestType == 'InActive' )
+    elseif( $requestType === 'InActive' )
     {
       $result = $crud -> update('user', ['is_active' => 'Active'], ['user_id', $_REQUEST['us']]);
       Email('sahmedrajput17@gmail.com', $userEmail, $userName, "Account Activated", 
@@ -120,13 +120,13 @@ if( isset($_REQUEST['request']) ):
       ");
       Redirect::to('index', ['msg' => "Activated"]);
     }
-    else if ($requestType == 'Active')
+    else if ($requestType === 'Active')
     {
       $result = $crud -> update('user', ['is_active' => 'InActive'], ['user_id', $_REQUEST['us']]);
       Email('sahmedrajput17@gmail.com', $userEmail, $userName, "Account De-activated", 
       "<b>Dear valued user,</b><br/> your account is Deactivated due to some violance, please read our terms & conditions for more or you can contact us <u>@.blogging</u>.
       ");
-      Redirect::to('index', ['msg' => "De-activated"]);
+      Redirect::to('users-all', ['msg' => "De-activated"]);
     }
   endif;
   if( isset($_REQUEST['uid']) ):

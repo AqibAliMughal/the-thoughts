@@ -1,9 +1,12 @@
 	<div class="row">
-		<div class="col-lg-2 col-md-2 col-sm-12"></div>
+		<div class="col-lg-2 col-md-2 col-sm-12" style="height:100%">
+		<?php require_once '../assets/initial/sidebar.php'; ?>
+		</div>
+		<?= isset($_REQUEST['msg'])? $_REQUEST['msg'] : '' ?>
 		<div class="col-lg-7 col-md-7 col-sm-12 mx-3">
 			<!-- < === SHOW ALL USER INFO ==== > -->
 			<h2><center class="my-4"><strong> All Users </strong></center></h2>
-			<div class="scroll-div" style="height: 500px;">
+			<div class="scroll-div" style="height: 800px;">
 				<table class="table table-hover approval-section">
 					<thead>
 						<tr>
@@ -17,7 +20,6 @@
 					</thead>
 					<tbody>
 					<?php 
-					
 						$serialNumber = 1;
 						foreach ($users as $key => $user) {
 							?>
@@ -29,9 +31,7 @@
 							<td><img src="../assets/user_image/<?= $user['user_image']?>" alt="User Profile Picture" width="50" height="50" style="border-radius:50%" ></td>
 								<td>
 								<?php if($user['is_active'] == 'Active'):?>
-									<p class="">Active</p>					
-								<?php else:?>
-									<p class="">InActive || <b> <?= $user['is_approved']?> </b></p>					
+									<a href="user-update.php?us=<?= $user['user_id']?>&request=Active" class="btn btn-success">Active</a> 
 								<?php endif;?> 
 								</td>
 								</tr>
@@ -43,5 +43,4 @@
 			</div>
 		</div>
 		<div class="col-lg-2 col-md-2 col-sm-12"></div>
-		<hr/>
 	</div>	
